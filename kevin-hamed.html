@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kevin Hamed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #1b1713;
+    --ink: #e9dfcd;
+    --dim: #8f8373;
+    --amber: #f2a93b;
+    --rule: #3b332a;
+    --panel: #221d18;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #f3ede2;
+      --ink: #2a241c;
+      --dim: #7a6f60;
+      --amber: #b8600a;
+      --rule: #d9cfbf;
+      --panel: #ebe3d5;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #f3ede2; --ink: #2a241c; --dim: #7a6f60; --amber: #b8600a; --rule: #d9cfbf; --panel: #ebe3d5;
+  }
+  :root[data-theme="dark"] {
+    --bg: #1b1713; --ink: #e9dfcd; --dim: #8f8373; --amber: #f2a93b; --rule: #3b332a; --panel: #221d18;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  main {
+    max-width: 44rem;
+    margin: 0 auto;
+    padding: 3.5rem 1.25rem 5rem;
+  }
+  a { color: var(--amber); text-decoration: none; border-bottom: 1px solid transparent; }
+  a:hover, a:focus-visible { border-bottom-color: var(--amber); outline: none; }
+  a:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+
+  /* prompt line */
+  .cmd {
+    color: var(--dim);
+    margin: 2.6rem 0 0.6rem;
+    white-space: nowrap;
+    overflow-x: auto;
+  }
+  .cmd::before { content: "kevin@stockholm:~$ "; }
+  .cmd b { color: var(--ink); font-weight: 500; }
+
+  /* hero */
+  h1 {
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    font-weight: 500;
+    line-height: 1.1;
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  h1::after {
+    content: "";
+    display: inline-block;
+    width: 0.55em; height: 1em;
+    background: var(--amber);
+    margin-left: 0.15em;
+    vertical-align: -0.1em;
+    animation: blink 1.1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { h1::after { animation: none; } }
+
+
+  /* generic output blocks */
+  .out { margin: 0; padding-left: 0; list-style: none; }
+  .out li { margin: 0 0 1.25rem; }
+  .out li:last-child { margin-bottom: 0; }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    gap: 0 1.5rem;
+    align-items: baseline;
+  }
+  .row > span:first-child { min-width: 0; }
+  .row .when { color: var(--dim); white-space: nowrap; }
+  @media (max-width: 480px) {
+    .row { grid-template-columns: 1fr; }
+    .row .when { font-size: 0.85rem; }
+  }
+  .where { color: var(--dim); white-space: nowrap; }
+  @media (max-width: 480px) {
+    .where { display: block; white-space: normal; }
+    .where::before { content: ""; }
+  }
+  .note { position: relative; margin: 0.15rem 0 0; padding-left: 1.2em; color: var(--ink); opacity: 0.9; }
+  .note::before { content: "-"; position: absolute; left: 0; color: var(--amber); }
+
+  /* skills table */
+  .kv { display: grid; grid-template-columns: max-content 1fr; gap: 0.35rem 1.5rem; margin: 0; }
+  .kv dt { color: var(--dim); }
+  .kv dd { margin: 0; }
+  @media (max-width: 480px) {
+    .kv { grid-template-columns: 1fr; gap: 0.1rem; }
+    .kv dd { margin-bottom: 0.6rem; }
+  }
+
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--rule);
+    color: var(--dim);
+    font-size: 0.85rem;
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <header class="hero">
+    <h1>Kevin Hamed</h1>
+  </header>
+
+  <p class="cmd"><b>cat</b> experience.txt</p>
+  <ul class="out">
+    <li>
+      <div class="row"><span>AI Engineer (part-time) <span class="where">— Bankaktiebolaget Nordiska</span></span><span class="when">Sep 2026 – now</span></div>
+      <p class="note">Architecting and deploying autonomous agents and multi-step agentic workflows to automate banking operations.</p>
+    </li>
+    <li>
+      <div class="row"><span>Quantitative Risk Analyst / Developer (internship) <span class="where">— Svenska Handelsbanken</span></span><span class="when">Jun 2024 – Aug 2026</span></div>
+      <p class="note">Built a privacy-preserving internal chatbot on small open-weight LLMs with a custom RAG pipeline.</p>
+      <p class="note">Wrote a SAS tool for FX risk analysis that cut ~2.5 hours of manual work per week.</p>
+    </li>
+    <li>
+      <div class="row"><span>Teaching Assistant <span class="where">— KTH</span></span><span class="when">Sep 2024 – Jun 2026</span></div>
+      <p class="note">DD1420 Foundations of Machine Learning, DD1368 Database Technology.</p>
+    </li>
+    <li>
+      <div class="row"><span>Software Engineer (internship) <span class="where">— Tendmill</span></span><span class="when">Jan 2024 – Jun 2024</span></div>
+      <p class="note">Six-month project with the Tendmill team (KTH DD1367) building on their food-procurement platform — React, JavaScript, Docker, DuckDB.</p>
+    </li>
+    <li>
+      <div class="row"><span>Manufacturing Technician <span class="where">— AstraZeneca</span></span><span class="when">Jun 2022 – Jan 2024</span></div>
+      <p class="note">Retained full-time, currently on student leave.</p>
+    </li>
+  </ul>
+
+  <p class="cmd"><b>ls</b> projects/</p>
+  <ul class="out">
+    <li>
+      <div class="row"><span>Matching H&amp;M articles to fashion trends <span class="where">— H&amp;M × KTH DD2430</span></span><span class="when">Sep 2026 – now</span></div>
+      <p class="note">Give it a paragraph from Vogue, get back the H&amp;M articles that match. Trend-conditioned retrieval over the full catalog, extending Pinterest's Conditional Retrieval (KDD 2025) from user interests to free-text trends.</p>
+      <p class="note">Text and image embeddings, LLM-assisted trend dataset, benchmarked against embedding and keyword baselines. Master's project with H&amp;M's AI &amp; Data team.</p>
+    </li>
+    <li>
+      <div class="row"><span>TeXpress <span class="where">— open source, <a href="https://github.com/Axreub/texpress">github</a></span></span><span class="when">2026</span></div>
+      <p class="note">Browser extension / userscript that adds fast snippet expansion to Overleaf — 100+ LaTeX triggers, math-mode detection, tabstops, regex triggers. Contributor. Published on the Chrome Web Store and Firefox Add&#8209;ons.</p>
+    </li>
+    <li>
+      <div class="row"><span>Text generation with LSTM networks <span class="where">— KTH DD2424</span></span><span class="when">Apr 2026</span></div>
+      <p class="note">Deep LSTMs vs. a baseline RNN; compared BPE and Word2Vec tokenization on perplexity and cross-entropy.</p>
+    </li>
+    <li>
+      <div class="row"><span>AI investment assistant <span class="where">— Nordea × AWS hackathon</span></span><span class="when">May 2024</span></div>
+      <p class="note">Demo that transcribes earnings calls (AWS Transcribe) and uses LLMs to analyse and summarise them for analysts.</p>
+    </li>
+    <li>
+      <div class="row"><span>Bachelor thesis: YOLOv11 and object size <span class="where">— KTH</span></span><span class="when">2025</span></div>
+      <p class="note">A comparative analysis of YOLOv11 models and how object size affects detection performance.</p>
+    </li>
+  </ul>
+
+  <p class="cmd"><b>cat</b> education.txt</p>
+  <ul class="out">
+    <li><div class="row"><span>MSc Machine Learning <span class="where">— KTH Royal Institute of Technology</span></span><span class="when">2025 – 2027</span></div></li>
+    <li><div class="row"><span>BSc Business &amp; Economics <span class="where">— Stockholm School of Economics</span></span><span class="when">2023 – 2027</span></div></li>
+    <li><div class="row"><span>BSc Computer Science &amp; Engineering <span class="where">— KTH</span></span><span class="when">2022 – 2025</span></div></li>
+  </ul>
+
+  <p class="cmd"><b>cat</b> skills.txt</p>
+  <dl class="kv">
+    <dt>code</dt><dd>Python (PyTorch, Pandas, Scikit-Learn), SQL, SAS, Java, C++, Bash</dd>
+    <dt>ml / ai</dt><dd>LLMs, agentic workflows, RAG, NLP</dd>
+    <dt>infra</dt><dd>AWS, Google Cloud, Docker, Git, Linux</dd>
+    <dt>web</dt><dd>React, JavaScript, DuckDB</dd>
+    <dt>spoken</dt><dd>Swedish (native), English (fluent), Kurdish (fluent)</dd>
+  </dl>
+
+  <p class="cmd"><b>cat</b> misc.txt</p>
+  <ul class="out">
+    <li>
+      <div class="row"><span>Business Developer <span class="where">— KTH AI Society</span></span><span class="when">Aug 2026 – now</span></div>
+      <p class="note">Partnerships with AI companies to connect industry and students.</p>
+    </li>
+    <li>
+      <div class="row"><span>Elite basketball <span class="where">— Södertälje BBK</span></span><span class="when">2017 – 2022</span></div>
+      <p class="note">2nd place in the Swedish national championships 2019/20; team captain 2020–22.</p>
+    </li>
+  </ul>
+
+  <p class="cmd"><b>cat</b> contact.txt</p>
+  <p style="margin:0">
+    <a href="mailto:kevin.hamed@hotmail.com">kevin.hamed@hotmail.com</a><br>
+    <a href="https://www.linkedin.com/in/kevin-hamed-ab378b253/">linkedin.com/in/kevin-hamed-ab378b253</a><br>
+    Stockholm, Sweden
+  </p>
+
+  <footer>Last updated September 2026.</footer>
+
+</main>
+</body>
+</html>
